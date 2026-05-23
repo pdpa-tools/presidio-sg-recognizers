@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-05-23
+
+Internal release. No package behaviour changes.
+
+### Changed
+
+- Publish workflow bumped to Node 24-compatible action majors:
+  `actions/setup-python` v5 -> v6, `actions/upload-artifact` v4 -> v7,
+  `actions/download-artifact` v4 -> v8. GitHub Actions runners
+  default to Node 24 from 2026-06-02, after which the older
+  versions emit deprecation warnings.
+
 ## [0.1.0] - 2026-05-23
 
 Initial release. Extracted from the [pdpa-scrub](https://github.com/pdpa-tools/pdpa-scrub) project.
@@ -22,5 +34,6 @@ Initial release. Extracted from the [pdpa-scrub](https://github.com/pdpa-tools/p
 - Per-recognizer `*_FORMAT_RE` re-exports for callers that want the bare regex without Presidio.
 - Test suite: 145+ tests including hand-verified fixtures, Hypothesis property-based round trips, samliew-cross-validated samples, format-regex behaviour, and Presidio integration.
 
-[Unreleased]: https://github.com/pdpa-tools/presidio-sg-recognizers/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/pdpa-tools/presidio-sg-recognizers/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/pdpa-tools/presidio-sg-recognizers/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/pdpa-tools/presidio-sg-recognizers/releases/tag/v0.1.0
