@@ -1,0 +1,63 @@
+name: CI
+
+# CI runs on every push and on every pull request targeting main. Keeps
+# the merge gate honest. The matrix tests against the full supported
+# Python range declared in pyproject.toml (3.11+), with 3.13 as the
+# primary development pin.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Cancel in-flight runs when a new commit lands on the same branch.
+# Saves minutes and keeps the latest commit's status authoritative.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-and-test:
+    name: lint + test (py${{ matrix.python-version }})
+    # Ubuntu chosen for free-tier minute economics. This package is
+    # pure-Python with no native deps, so cross-platform coverage is
+    # not a meaningful concern at this stage.
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Install uv
+        # Pinned to an exact version: astral-sh stopped publishing
+        # floating major-version tags (e.g. @v8) as a security measure,
+        # so we use an immutable tag to make supply-chain provenance
+        # explicit. Bump deliberately when a newer version ships.
+        uses: astral-sh/setup-uv@v8.1.0
+        with:
+          enable-cache: true
+          cache-dependency-glob: "pyproject.toml"
+
+      - name: Set up Python ${{ matrix.python-version }}
+        run: uv python install ${{ matrix.python-version }}
+
+      - name: Sync dev dependencies (no lockfile in v0.1.0)
+        # The repo intentionally does not commit a uv.lock at v0.1.0 to
+        # avoid pinning consumers to a specific resolution. uv resolves
+        # against pyproject.toml directly. Add `uv lock --frozen` here
+        # once a lockfile is committed.
+        run: uv sync --group dev --python ${{ matrix.python-version }}
+
+      - name: Ruff lint
+        run: uv run ruff check .
+
+      - name: Ruff format check
+        run: uv run ruff format --check .
+
+      - name: Run pytest
+        run: uv run pytest -ra

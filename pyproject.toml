@@ -1,0 +1,113 @@
+[project]
+name = "presidio-sg-recognizers"
+version = "0.1.0"
+description = "Singapore-specific custom recognizers for Microsoft Presidio: NRIC and FIN with checksum validation, SG phone, SG postal, and configurable internal code."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Richard Tsao" },
+]
+keywords = [
+    "presidio",
+    "pii",
+    "privacy",
+    "anonymization",
+    "singapore",
+    "pdpa",
+    "nric",
+    "fin",
+    "recognizer",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Security",
+    "Topic :: Text Processing :: Linguistic",
+]
+
+# Runtime dependency. presidio-analyzer's `>=2.2, <3` window is the
+# published support range for the v2 line; the v3 line is not yet
+# stable as of mid-2026 and is out of scope until it lands and we have
+# bandwidth to validate against it.
+dependencies = [
+    "presidio-analyzer>=2.2,<3",
+]
+
+[project.urls]
+Homepage = "https://github.com/pdpa-tools/presidio-sg-recognizers"
+Repository = "https://github.com/pdpa-tools/presidio-sg-recognizers"
+Issues = "https://github.com/pdpa-tools/presidio-sg-recognizers/issues"
+Changelog = "https://github.com/pdpa-tools/presidio-sg-recognizers/blob/main/CHANGELOG.md"
+
+# PEP 735 standard dependency groups (accepted October 2024; read by uv,
+# pip 25.1+, Poetry 2.2+, PDM, and Hatch 1.16+). Install with
+# `uv sync --group dev`; not published to PyPI.
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+    # Hypothesis drives property-based round-trip tests on the
+    # checksum algorithm over the full (prefix, digits) input space.
+    "hypothesis>=6.100",
+]
+
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+# src/ layout: hatchling needs to know the package is rooted at
+# src/presidio_sg_recognizers, not at the repo root.
+packages = ["src/presidio_sg_recognizers"]
+
+[tool.hatch.build.targets.sdist]
+# Source distributions ship the package source plus everything the user
+# would need to rebuild the wheel locally. Test files are included so
+# downstream packagers (e.g. nix, conda-forge) can re-run the suite.
+include = [
+    "src/",
+    "tests/",
+    "README.md",
+    "LICENSE",
+    "ATTRIBUTIONS.md",
+    "CHANGELOG.md",
+    "pyproject.toml",
+]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+addopts = [
+    "-ra",
+    "--strict-markers",
+    "--strict-config",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+# src/ layout: tell ruff where the package source lives so its isort
+# pass can distinguish first-party from third-party imports correctly.
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # pyflakes
+    "I",    # isort
+    "B",    # bugbear
+    "UP",   # pyupgrade
+    "SIM",  # simplify
+]
+ignore = []
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["B011"]  # allow assert in tests

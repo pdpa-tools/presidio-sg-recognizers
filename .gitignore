@@ -1,0 +1,51 @@
+# ==============================================================================
+# .gitignore for presidio-sg-recognizers
+# ==============================================================================
+
+# Python build / cache artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+build/
+dist/
+.venv/
+.venv-*/
+venv/
+.pytest_cache/
+pytest-cache-files-*/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+
+# Coverage
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# uv lockfile is deliberately tracked (see README "Pinned dependencies").
+# Nothing to ignore here.
+
+# Credentials and secrets (defense in depth; nothing in this repo should
+# ever need a secret on disk, but this catches accidents).
+.env
+.env.*
+*.env
+*.key
+*.pem
+.pypirc
+.netrc
+
+# OS cruft (typically caught by ~/.gitignore_global; here as a backstop)
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.idea/
+.vscode/
+
+# Claude personal overrides (project-level .claude/settings.json,
+# commands, and agents are intentionally trackable; only the personal
+# overrides file is excluded).
+.claude/settings.local.json
