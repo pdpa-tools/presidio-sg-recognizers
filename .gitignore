@@ -49,3 +49,27 @@ Thumbs.db
 # commands, and agents are intentionally trackable; only the personal
 # overrides file is excluded).
 .claude/settings.local.json
+
+# ------------------------------------------------------------------------------
+# Dated tooling backups
+# ------------------------------------------------------------------------------
+# Local tooling writes dated <name>.bak-YYYYMMDD copies beside files it
+# rewrites. They are a transient safety net, never history, and must not be
+# swept into a commit by `git add .`.
+
+*.bak-[0-9]*
+
+# ------------------------------------------------------------------------------
+# Project-specific ignores
+# Add entries below this line, tagged with a [PROJECT-SPECIFIC] header.
+# ------------------------------------------------------------------------------
+
+# [PROJECT-SPECIFIC] Local-only working docs.
+# Development notes and AI-assistant configuration. Machine-specific, not part
+# of the project, and deliberately kept out of the repo.
+AGENTS.md
+CLAUDE.md
+CONTEXT.md
+
+# [PROJECT-SPECIFIC] structural
+temp/
