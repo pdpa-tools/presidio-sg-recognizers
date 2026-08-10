@@ -73,3 +73,8 @@ CONTEXT.md
 
 # [PROJECT-SPECIFIC] structural
 temp/
+
+# Lockfile. This is a library published to PyPI; a lockfile constrains
+# nothing for consumers and CI resolves against pyproject.toml directly.
+# See the note in .github/workflows/ci.yml.
+uv.lock
