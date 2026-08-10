@@ -33,9 +33,11 @@ Design notes:
   11-letter lookup table; they differ only in the prefix offset added
   to the weighted sum. Earlier community write-ups sometimes claim
   three distinct tables; cross-checking against 15 samples validated
-  by an independent online tool disproves that. This package's test
-  suite pins this with hand-verified fixtures plus property tests
-  covering the full input space.
+  by samliew's online NRIC validator
+  (https://samliew.com/singapore-nric-validator) disproves that. The
+  samples are pinned as `SAMLIEW_VALIDATED_SAMPLES` in
+  `tests/test_checksum.py`, alongside hand-verified fixtures and
+  property tests covering the full input space.
 """
 
 from __future__ import annotations

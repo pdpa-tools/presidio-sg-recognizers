@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Attribution updated for Presidio's move out of Microsoft: the project
+  now lives at `data-privacy-stack/presidio` and its LICENSE names the
+  Presidio Contributors as copyright holder. `ATTRIBUTIONS.md`, `NOTICE`,
+  the README, the package description, and the module docstring no
+  longer credit Microsoft Corporation; an origin note records the
+  history.
+- Checksum provenance comments now name samliew's NRIC validator
+  explicitly and point to the pinned `SAMLIEW_VALIDATED_SAMPLES`
+  fixtures.
+
 ## [0.1.1] - 2026-05-23
 
 Internal release. No package behaviour changes.

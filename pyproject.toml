@@ -1,7 +1,7 @@
 [project]
 name = "presidio-sg-recognizers"
 version = "0.1.1"
-description = "Singapore-specific custom recognizers for Microsoft Presidio: NRIC and FIN with checksum validation, SG phone, SG postal, and configurable internal code."
+description = "Singapore-specific custom recognizers for Presidio: NRIC and FIN with checksum validation, SG phone, SG postal, and configurable internal code."
 readme = "README.md"
 requires-python = ">=3.11"
 license = { file = "LICENSE" }

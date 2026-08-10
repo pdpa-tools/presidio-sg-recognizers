@@ -6,6 +6,6 @@ of publicly-documented Singapore identifier algorithms (NRIC, FIN
 checksum). The algorithm specifications used are not copyrightable;
 see ATTRIBUTIONS.md for the full provenance stance.
 
-This product depends on Microsoft Presidio (presidio-analyzer), which
-is licensed under the MIT License. See ATTRIBUTIONS.md for the
-upstream copyright notice and source URL.
+This product depends on Presidio (presidio-analyzer), copyright the
+Presidio Contributors, which is licensed under the MIT License. See
+ATTRIBUTIONS.md for the upstream copyright notice and source URL.

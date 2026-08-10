@@ -1,4 +1,4 @@
-"""Singapore-specific custom recognizers for Microsoft Presidio.
+"""Singapore-specific custom recognizers for Presidio.
 
 Each recognizer subclasses Presidio's `PatternRecognizer` (or
 `EntityRecognizer` for non-pattern cases) and implements

@@ -5,12 +5,16 @@ credited with its copyright owner, license, and source URL.
 
 ## Runtime dependencies
 
-### Microsoft Presidio (presidio-analyzer)
+### Presidio (presidio-analyzer)
 
-Copyright (c) Microsoft Corporation.
+Copyright (c) Presidio Contributors.
 Licensed under the MIT License.
-Source: https://github.com/microsoft/presidio
+Source: https://github.com/data-privacy-stack/presidio
 PyPI: https://pypi.org/project/presidio-analyzer/
+
+Presidio originated at Microsoft and moved to the community-maintained
+`data-privacy-stack` GitHub organisation in 2026; its LICENSE now names
+the Presidio Contributors as copyright holder.
 
 This package builds on Presidio's `PatternRecognizer` and
 `EntityRecognizer` base classes. No Presidio source is vendored; the
@@ -60,10 +64,13 @@ on every series prefix.
 
 ## Trademarks
 
-"Presidio" is a project of Microsoft Corporation. "Singapore" and
+"Presidio" is an open-source project that originated at Microsoft and
+is now maintained by the Presidio Contributors under the
+`data-privacy-stack` GitHub organisation. "Singapore" and
 "NRIC" / "FIN" are not trademarks; the algorithms and identifier
 formats are public-domain administrative protocols.
 
-This project is not affiliated with, sponsored by, or endorsed by
-Microsoft Corporation, the Immigration and Checkpoints Authority of
-Singapore, or the Personal Data Protection Commission of Singapore.
+This project is not affiliated with, sponsored by, or endorsed by the
+Presidio project, Microsoft Corporation, the Immigration and
+Checkpoints Authority of Singapore, or the Personal Data Protection
+Commission of Singapore.

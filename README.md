@@ -5,7 +5,7 @@
 [![Python versions](https://img.shields.io/pypi/pyversions/presidio-sg-recognizers.svg)](https://pypi.org/project/presidio-sg-recognizers/)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
-Singapore-specific custom recognizers for [Microsoft Presidio](https://github.com/microsoft/presidio). Detects identifiers that Presidio's defaults miss or overshoot in a Singapore context: NRIC and FIN with full checksum validation, Singapore mobile and landline phone numbers, six-digit postal codes, and configurable internal codes (cost-centre, project, clinical-service, course code, etc.).
+Singapore-specific custom recognizers for [Presidio](https://github.com/data-privacy-stack/presidio). Detects identifiers that Presidio's defaults miss or overshoot in a Singapore context: NRIC and FIN with full checksum validation, Singapore mobile and landline phone numbers, six-digit postal codes, and configurable internal codes (cost-centre, project, clinical-service, course code, etc.).
 
 The Personal Data Protection Act 2012 (PDPA) is Singapore's data protection law. PDPA-grade detection requires correct, locally-aware recognizers; this package fills the gap that Presidio's out-of-the-box English recognizers leave open for Singapore data.
 
