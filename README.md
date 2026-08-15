@@ -5,7 +5,7 @@
 [![Python versions](https://img.shields.io/pypi/pyversions/presidio-sg-recognizers.svg)](https://pypi.org/project/presidio-sg-recognizers/)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
-Singapore-specific custom recognizers for [Presidio](https://github.com/data-privacy-stack/presidio). Detects identifiers that Presidio's defaults miss or overshoot in a Singapore context: NRIC and FIN with full checksum validation, Singapore mobile and landline phone numbers, six-digit postal codes, and configurable internal codes (cost-centre, project, clinical-service, course code, etc.).
+Singapore-specific custom recognizers for [Presidio](https://github.com/data-privacy-stack/presidio). Detects identifiers that Presidio's defaults miss or overshoot in a Singapore context: National Registration Identity Card (NRIC) and Foreign Identification Number (FIN) with full checksum validation, Singapore mobile and landline phone numbers, six-digit postal codes, and configurable internal codes (cost-centre, project, clinical-service, course code, etc.).
 
 The Personal Data Protection Act 2012 (PDPA) is Singapore's data protection law. PDPA-grade detection requires correct, locally-aware recognizers; this package fills the gap that Presidio's out-of-the-box English recognizers leave open for Singapore data.
 
@@ -13,8 +13,8 @@ The Personal Data Protection Act 2012 (PDPA) is Singapore's data protection law.
 
 | Entity type      | What it matches                                  | Validation     |
 |------------------|--------------------------------------------------|----------------|
-| `SG_NRIC`        | NRIC (National Registration Identity Card), S/T prefix | Checksum   |
-| `SG_FIN`         | FIN (Foreign Identification Number), F/G/M prefix      | Checksum   |
+| `SG_NRIC`        | NRIC, S/T prefix                                 | Checksum       |
+| `SG_FIN`         | FIN, F/G/M prefix                                | Checksum       |
 | `SG_PHONE`       | Singapore phone: +65 / 0065 prefix optional, 3/6/8/9 leading digit | Format only |
 | `SG_POSTAL`      | 6-digit postal code with address-context scoring       | Context-boosted |
 | `INTERNAL_CODE`  | Configurable letter+digit code (default: 3 letters + 4 digits) | Format only |
