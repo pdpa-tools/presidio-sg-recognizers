@@ -136,7 +136,13 @@ Issues and pull requests are welcome. Before opening a PR:
 
 - Tests pass (`uv run pytest -ra`).
 - Code is formatted (`uv run ruff format .`) and lint-clean (`uv run ruff check .`).
-- No real Singapore identifiers, names, or organisations in fixtures or examples. The test suite uses obvious synthetic placeholders (`S0000001I`, `S1234567D`, "Jane Doe") that pass format checks but are not real. PRs that introduce real-looking values will be asked to swap them out.
+- No real Singapore identifiers, names, or organisations in fixtures or examples. Use placeholders that are visibly fabricated: a repeated digit, an ascending or descending run, or zero-padded (`S1111111D`, `S1234567D`, `S0000001I`, "Jane Doe"). PRs that introduce random-looking values will be asked to swap them out.
+
+### Why the fixture rule is about shape, not origin
+
+A checksum-valid identifier is checksum-valid whoever holds it. Generating one at random does not make it unused, and nothing in the number records where it came from, so a reader cannot tell a fabricated identifier from one issued to a real person by looking at it. The rule therefore asks for placeholders that are obviously fabricated, not merely synthetic ones.
+
+This repository did not always meet its own rule. An earlier set of fixtures was generated rather than harvested, and was still random-looking, which is the exact case the rule exists to prevent: the provenance was fine and the result was indistinguishable from a real number anyway. They were replaced with repeated-digit forms in #2. That history is written down rather than dropped, because a rule reads as arbitrary until you know which mistake produced it.
 
 For larger changes (new recognizer types, breaking API changes, new ways to configure existing recognizers), open an issue first to talk through the design.
 
