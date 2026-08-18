@@ -96,28 +96,49 @@ FIN_VALID_FIXTURES: tuple[tuple[str, str, str], ...] = (
 )
 
 # Independent cross-validation samples: synthetic identifiers generated
-# and confirmed valid by samliew.com's NRIC validator
+# here and confirmed valid by samliew.com's NRIC validator
 # (https://samliew.com/singapore-nric-validator), an implementation
 # independent of this package. These pin the lookup tables against
 # external output rather than self-derived computation, catching the
 # class of bug where my hand-derivation and the algorithm agree but the
 # underlying table assignment is wrong.
+#
+# The digits are repeated on purpose. An earlier set used random-looking
+# digits, which were generated rather than harvested but were, by
+# construction, indistinguishable from identifiers issued to real people:
+# a checksum-valid identifier is checksum-valid whoever holds it, and no
+# reader can tell provenance by looking. Repdigits keep the cross-prefix
+# coverage (three per series, distinct remainders) while being obviously
+# fabricated, which is what CONTRIBUTING asks of every fixture in this
+# suite.
+#
+# All fifteen re-confirmed against the external validator on 18 August
+# 2026, run with two controls whose answers that validator had already
+# given: M1234567K (expected valid) and M1234567X (expected invalid).
+# Both came back as documented, which is what makes the fifteen results
+# mean anything; fifteen unbroken passes with no control would be
+# equally consistent with a probe that always says yes.
+#
+# Re-confirm any future change here the same way, controls included. The
+# whole point of this block is that the expected answers came from
+# outside, so a value this package computed for itself and then asserts
+# is valid proves nothing, and a green test run is not evidence.
 SAMLIEW_VALIDATED_SAMPLES: tuple[str, ...] = (
-    "S9334391C",
-    "S1855396A",
-    "S3185214E",
-    "T9221398B",
-    "T0937406F",
-    "T9625527B",
-    "F7400134M",
-    "F9374705N",
-    "F9422491T",
-    "G3918414T",
-    "G1663120K",
-    "G7674562K",
-    "M3584791R",
-    "M5111432Q",
-    "M7160497N",
+    "S1111111D",
+    "S2222222H",
+    "S3333333A",
+    "T1111111J",
+    "T2222222D",
+    "T3333333H",
+    "F1111111N",
+    "F2222222T",
+    "F3333333K",
+    "G1111111X",
+    "G2222222N",
+    "G3333333T",
+    "M1111111K",
+    "M2222222P",
+    "M3333333U",
 )
 
 
