@@ -112,10 +112,17 @@ FIN_VALID_FIXTURES: tuple[tuple[str, str, str], ...] = (
 # fabricated, which is what CONTRIBUTING asks of every fixture in this
 # suite.
 #
-# Re-confirm any change here against the external validator before
-# merging. The whole point of this block is that the expected answers
-# came from outside; a value this package computed for itself and then
-# asserts is valid proves nothing.
+# All fifteen re-confirmed against the external validator on 18 August
+# 2026, run with two controls whose answers that validator had already
+# given: M1234567K (expected valid) and M1234567X (expected invalid).
+# Both came back as documented, which is what makes the fifteen results
+# mean anything; fifteen unbroken passes with no control would be
+# equally consistent with a probe that always says yes.
+#
+# Re-confirm any future change here the same way, controls included. The
+# whole point of this block is that the expected answers came from
+# outside, so a value this package computed for itself and then asserts
+# is valid proves nothing, and a green test run is not evidence.
 SAMLIEW_VALIDATED_SAMPLES: tuple[str, ...] = (
     "S1111111D",
     "S2222222H",
