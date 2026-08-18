@@ -1,6 +1,6 @@
 [project]
 name = "presidio-sg-recognizers"
-version = "0.1.1"
+version = "0.1.2"
 description = "Singapore-specific custom recognizers for Presidio: NRIC and FIN with checksum validation, SG phone, SG postal, and configurable internal code."
 readme = "README.md"
 requires-python = ">=3.11"
