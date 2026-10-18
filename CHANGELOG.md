@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-10-18
+
 ### Changed
 
 - `SG_POSTAL` now matches a postal code with a standalone "S" prefix
@@ -70,7 +72,8 @@ Initial release. Extracted from the [pdpa-scrub](https://github.com/pdpa-tools/p
 - Per-recognizer `*_FORMAT_RE` re-exports for callers that want the bare regex without Presidio.
 - Test suite: 145+ tests including hand-verified fixtures, Hypothesis property-based round trips, samliew-cross-validated samples, format-regex behaviour, and Presidio integration.
 
-[Unreleased]: https://github.com/pdpa-tools/presidio-sg-recognizers/compare/v0.1.2...HEAD
+[Unreleased]: https://github.com/pdpa-tools/presidio-sg-recognizers/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/pdpa-tools/presidio-sg-recognizers/compare/v0.1.2...v0.2.0
 [0.1.2]: https://github.com/pdpa-tools/presidio-sg-recognizers/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/pdpa-tools/presidio-sg-recognizers/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/pdpa-tools/presidio-sg-recognizers/releases/tag/v0.1.0
