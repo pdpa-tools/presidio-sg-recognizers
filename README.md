@@ -94,6 +94,8 @@ Earlier community write-ups sometimes claim three distinct M-series tables; cros
 
 A bare 6-digit number is too ambiguous to flag on its own (phone last-six, reference numbers, year-month concatenations, the like). The postal recognizer ships with a low base score (0.3) and a context list of street suffixes, "Singapore", "Blk", and similar. Presidio's analyzer engine boosts the score when those context words appear within the proximity window, so address-shaped surroundings raise the postal candidate into the detection range while isolated 6-digit runs stay below it.
 
+A standalone "S" prefix is part of the match: "S123456", "S 123456" and "S(123456)" each come back as one span, so redacting it leaves no stray "S", and the unspaced form, which has no word boundary before its digits, is found at all. The prefix never joins a longer code: "S1234567" and "S123456D" do not match.
+
 ## Testing
 
 ```bash

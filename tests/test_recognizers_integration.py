@@ -106,6 +106,15 @@ def test_postal_format_matches_with_address_context():
     assert "SG_POSTAL" in _entity_types(results)
 
 
+def test_postal_span_includes_an_s_prefix():
+    """An S-prefixed postal code is one span, so no stray "S" is left behind."""
+    text = "Deliver to Singapore S123456 by Friday."
+    results = sg_postal.build_recognizer().analyze(
+        text=text, entities=["SG_POSTAL"], nlp_artifacts=None
+    )
+    assert [text[r.start : r.end] for r in results] == ["S123456"]
+
+
 def test_internal_code_detection_through_presidio():
     """Two distinct internal codes in a sentence both surface as INTERNAL_CODE.
 
