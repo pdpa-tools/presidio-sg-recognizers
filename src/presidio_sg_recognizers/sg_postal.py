@@ -1,6 +1,7 @@
 """Singapore postal code recognizer.
 
-Singapore postal codes are exactly 6 digits with no internal separators.
+Singapore postal codes are exactly 6 digits with no internal separators,
+often written with an "S" prefix ("S123456", "S(123456)").
 A bare 6-digit number is too ambiguous to flag on its own (phone
 last-six, reference numbers, year-month concatenations), so this
 recogniser relies on Presidio's context-boosting mechanism: the score is
@@ -28,8 +29,12 @@ SG_POSTAL_ENTITY: str = "SG_POSTAL"
 
 # Six contiguous digits. Word boundaries on both sides prevent matches
 # inside longer numeric runs (NRIC digits, account numbers, dates as
-# YYYYMMDD).
-_POSTAL_REGEX: str = r"\b\d{6}\b"
+# YYYYMMDD). A standalone S prefix is part of the match ("S123456",
+# "S 123456", "S(123456)"), so the unspaced form, which has no word
+# boundary before its digits, is found too, and redacting the span
+# leaves no stray "S". The prefix never joins a longer code
+# ("S1234567", "S123456D").
+_POSTAL_REGEX: str = r"\b(?:[Ss][ \t]?\([ \t]?\d{6}[ \t]?\)|[Ss][ \t]?\d{6}\b|\d{6}\b)"
 
 # Context terms that elevate a bare 6-digit string to a likely postal
 # code. Presidio's analyzer engine boosts the recogniser score when any

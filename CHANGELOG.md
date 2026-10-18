@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- `SG_POSTAL` now matches a postal code with a standalone "S" prefix
+  ("S123456", "s123456", "S 123456", "S(123456)") and includes the prefix
+  in the span. The unspaced form was missed entirely, since there is no
+  word boundary between the "S" and the digits, and the spaced and
+  bracketed forms left the "S" outside the span. Spans for those forms
+  are now wider, so a consumer that compared span text sees "S 123456"
+  where it used to see "123456". The prefix never joins a longer code
+  ("S1234567", "S123456D"); bare six-digit matches are unchanged.
+
 ## [0.1.2] - 2026-08-18
 
 ### Changed

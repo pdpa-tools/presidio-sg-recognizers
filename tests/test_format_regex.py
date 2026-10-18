@@ -134,6 +134,20 @@ class TestPostalFormatRegex:
     def test_does_not_match_wrong_length(self, text):
         assert POSTAL_FORMAT_RE.search(text) is None
 
+    @pytest.mark.parametrize("value", ["S123456", "s123456", "S 123456", "S(123456)", "S (123456)"])
+    def test_an_s_prefix_is_part_of_the_match(self, value):
+        match = POSTAL_FORMAT_RE.search(f"Singapore {value}, please")
+        assert match is not None
+        assert match.group() == value
+
+    @pytest.mark.parametrize("text", ["S1234567", "S123456D", "AS123456", "S(1234567)"])
+    def test_an_s_prefix_never_joins_a_longer_code(self, text):
+        assert POSTAL_FORMAT_RE.search(text) is None
+
+    @pytest.mark.parametrize(("text", "value"), [("(123456)", "123456"), ("AS 123456", "123456")])
+    def test_without_a_standalone_s_only_the_digits_match(self, text, value):
+        assert POSTAL_FORMAT_RE.search(text).group() == value
+
 
 class TestInternalCodeFormatRegex:
     @pytest.mark.parametrize(
