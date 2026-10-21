@@ -31,14 +31,14 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Install uv
         # Pinned to an exact version: astral-sh stopped publishing
         # floating major-version tags (e.g. @v8) as a security measure,
         # so we use an immutable tag to make supply-chain provenance
         # explicit. Bump deliberately when a newer version ships.
-        uses: astral-sh/setup-uv@v8.1.0
+        uses: astral-sh/setup-uv@v10.3.0
         with:
           enable-cache: true
           cache-dependency-glob: "pyproject.toml"
