@@ -1,0 +1,21 @@
+# Routine version updates for the GitHub Actions used by ci.yml and
+# publish.yml. The publish path depends on these, so they are kept
+# current rather than left on whatever major tag they were written with.
+#
+# No pip or uv entry. This is a library: uv.lock is not committed, and
+# the presidio-analyzer range in pyproject.toml already admits every 2.x
+# release, so a routine entry would only fire for a 3.0. Security
+# updates are switched on in the repository settings and cover the
+# direct dependency; the transitive tree is audited locally.
+#
+# No auto-merge. Each pull request is reviewed and merged by hand.
+
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      actions:
+        patterns: ["*"]
