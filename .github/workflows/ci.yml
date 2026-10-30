@@ -38,7 +38,7 @@ jobs:
         # floating major-version tags (e.g. @v8) as a security measure,
         # so we use an immutable tag to make supply-chain provenance
         # explicit. Bump deliberately when a newer version ships.
-        uses: astral-sh/setup-uv@v10.3.0
+        uses: astral-sh/setup-uv@v10.3.2
         with:
           enable-cache: true
           cache-dependency-glob: "pyproject.toml"
